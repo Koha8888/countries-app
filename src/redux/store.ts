@@ -1,7 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { useAppSelector } from "./hooks";
+
+import { countriesReducer } from './reducers/countries';
 
 export const store = configureStore({
+  // const countries = useAppSelector(state => state.countriesReducer)
   reducer: {
+    countriesReducer
   },
 });
 
