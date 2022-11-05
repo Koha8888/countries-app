@@ -18,7 +18,7 @@ const countriesSlice = createSlice({
     reducers: {
         sortByName: (state) => {
             state.sort((a,b) => a.name.official > b.name.official ? 1 : -1)
-        }
+        },
     },
     extraReducers: (build) => {
         build.addCase(fetchCountries.fulfilled, (state, action) => {

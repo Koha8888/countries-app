@@ -16,6 +16,7 @@ export interface Country {
     flags: {
         png: string,
         svg: string
-    }
+    },
+    isFav: boolean
 
 }
