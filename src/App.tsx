@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import CountryTable from './components/CountryTable';
 import { useAppSelector, useAppDispatch } from './redux/hooks';
 import { countriesReducer, fetchCountries, sortByName } from './redux/reducers/countries';
 
@@ -13,13 +14,8 @@ function App() {
   return (
     <div className="App">
       <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
-      <ul>
-        {countries.map(item => (
-          <li key={item.name.official}>{item.name.official}</li>
-        ))}
-      </ul> 
+      <CountryTable countries={countries} /> 
     </div>
   );
 }
-
 export default App;
