@@ -9,7 +9,6 @@ export interface Country {
         }
     },
     capital: string[],
-    region: string,
     languages: {
         [key:string]: string
     },
