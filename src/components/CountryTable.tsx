@@ -3,11 +3,8 @@ import { Country } from '../types/country';
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { fetchCountries } from "../redux/reducers/countries";
-
-interface CountryTableProps {
-    countries: Country[];
-}
+import { CountryTableProps } from "../types/CountryTable";
+import Typography from '@mui/material/Typography';
 
 const CountryTable = ({countries}: CountryTableProps) => {
     return (
@@ -19,6 +16,7 @@ const CountryTable = ({countries}: CountryTableProps) => {
               <TableCell>Official name</TableCell>
               <TableCell>Currency</TableCell>
               <TableCell>Capital</TableCell>
+              <TableCell>Languages</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -30,6 +28,7 @@ const CountryTable = ({countries}: CountryTableProps) => {
                 <TableCell>{item.name.official}</TableCell>
                 <TableCell>{Object.keys(item.currencies)}</TableCell>
                 <TableCell>{item.capital}</TableCell>
+                <TableCell>{Object.values(item.languages).map((item: any) => (<Typography key={item}>{item}</Typography>))}</TableCell>
               </TableRow>
             ))}
           </TableBody>
