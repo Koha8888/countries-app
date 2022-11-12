@@ -1,16 +1,18 @@
 import React, { createContext, useEffect, useState } from 'react';
-import './App.css';
 import CountryTable from './components/CountryTable';
 import { useAppSelector, useAppDispatch } from './redux/hooks';
 import { countriesReducer, fetchCountries, sortByName } from './redux/reducers/countries';
-
+import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { green, purple } from '@mui/material/colors';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import ToggleButton from './components/ToggleButton';
 import { Box } from "@mui/system";
-import { Grid } from "@mui/material";
+import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+
+import Home from './pages/Home';
+import SingleCountry from './pages/SingleCountry'
+import NavBar from './components/NavBar';
+
+
 
 export const ThemeContext = createContext ({toggleMode : () => {}}) 
 
@@ -60,16 +62,25 @@ function App() {
       setMode((prevMode)=> (prevMode === "light" ? "dark" : "light"))
     }
   }
+  
   return (
+    <BrowserRouter>
     <ThemeContext.Provider value={manageTheme}>
       <ThemeProvider theme={theme}>
         <Box className="App" sx={{bgcolor:'background.default'}} padding={5}>
+        <Typography variant="h3" align='center' color="#5e6166">Countries</Typography>
           <ToggleButton/>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={ <Home /> }> </Route>
+            <Route path='/SingleCountry' element={ <SingleCountry /> }> </Route>
+          </Routes>
           <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
           <CountryTable countries={countries} /> 
         </Box>
       </ThemeProvider>
     </ThemeContext.Provider>
+    </BrowserRouter>
   );
 }
 export default App;
