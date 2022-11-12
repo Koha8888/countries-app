@@ -10,7 +10,6 @@ import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
 
 import Home from './pages/Home';
 import SingleCountry from './pages/SingleCountry'
-import NavBar from './components/NavBar';
 
 
 
@@ -69,13 +68,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <Box className="App" sx={{bgcolor:'background.default'}} padding={5}>
         <Typography variant="h3" align='center' color="#5e6166">Countries</Typography>
+        <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
           <ToggleButton/>
-          <NavBar />
           <Routes>
             <Route path='/' element={ <Home /> }> </Route>
-            <Route path='/SingleCountry' element={ <SingleCountry /> }> </Route>
+            <Route path='/countries/:name' element={ <SingleCountry /> }> </Route>
           </Routes>
-          <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
+
           <CountryTable countries={countries} /> 
         </Box>
       </ThemeProvider>
