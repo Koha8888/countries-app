@@ -5,12 +5,13 @@ import {
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { CountryTableProps } from "../types/CountryTable";
 import Typography from '@mui/material/Typography';
+import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
 
 const CountryTable = ({countries}: CountryTableProps) => {
     return (
         <TableContainer>
         <Table>
-          <TableHead>
+          {/* <TableHead>
             <TableRow>
               <TableCell>Flag</TableCell>
               <TableCell>Official name</TableCell>
@@ -18,14 +19,14 @@ const CountryTable = ({countries}: CountryTableProps) => {
               <TableCell>Capital</TableCell>
               <TableCell>Languages</TableCell>
             </TableRow>
-          </TableHead>
+          </TableHead> */}
           <TableBody>
             {countries.map((item) => (
               <TableRow key={item.name.official}>
                 <TableCell>
                     <img src={item.flags.png} alt="flag" width="60em" />
                 </TableCell>
-                <TableCell>{item.name.official}</TableCell>
+                <TableCell><Link to = {"country/" + item.name.official}>{item.name.official}</Link></TableCell>
                 <TableCell>{Object.keys(item.currencies)}</TableCell>
                 <TableCell>{item.capital}</TableCell>
                 <TableCell>{Object.values(item.languages).map((item: any) => (<Typography key={item}>{item}</Typography>))}</TableCell>
