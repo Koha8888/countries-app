@@ -2,36 +2,46 @@ import React, { useEffect, useState } from 'react'
 import { fetchCountries } from '../redux/reducers/countries';
 import { Country } from '../types/country';
 import { useParams } from 'react-router-dom';
+import {
+    Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import Typography from '@mui/material/Typography';
+import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+
+
 
 const SingleCountry = () => {
 
     const {name} = useParams()
-
-    const [country, setCountry] = useState<Country[]>([])
-
-    useEffect(() => {
-      const fetchCountries = () => {
-        fetch("https://restcountries.com/v3.1/name/${name}?fullText=true")
-        .then((res)=> res.json())
-        .then((data:Country[])=>{
-            setCountry(data)
-      })
-      }
-    }, [name])
-    
-    fetchCountries()
-
-    if (country.length === 0) {
-        return <div>Loading</div>
-    }
-
-  return (
+    const currentCountry = useAppSelector((state)=>state.countriesReducer.find((country)=>country.name.official === name)) 
+    return (
     <div>
-        <ul>
-            <li>{country[0].capital}</li>
-            <li>{country[0].name.official}</li>
-            <li>{Object.keys(country[0].currencies)}</li>
-        </ul>
+        {currentCountry ? 
+        <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Flag</TableCell>
+              <TableCell>Official name</TableCell>
+              <TableCell>Currency</TableCell>
+              <TableCell>Capital</TableCell>
+              <TableCell>Languages</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+              <TableRow key={currentCountry.name.official}>
+                <TableCell>
+                    <img src={currentCountry.flags.png} alt="flag" width="60em" />
+                </TableCell>
+                <TableCell>{currentCountry.name.official}</TableCell>
+                <TableCell>{Object.keys(currentCountry.currencies)}</TableCell>
+                <TableCell>{currentCountry.capital}</TableCell>
+                <TableCell>{Object.values(currentCountry.languages).map((item: any) => (<Typography key={item}>{item}</Typography>))}</TableCell>
+              </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+        : <p>There are no such country</p>}
     </div>
   )
 }

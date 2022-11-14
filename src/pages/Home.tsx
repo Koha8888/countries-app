@@ -14,7 +14,7 @@ const Home = () => {
     const dispatch = useAppDispatch()
     const countries = useAppSelector (state => state.countriesReducer)
 
-    useEffect( () => { 
+    useEffect( () => {
         fetchCountries()
     }, [])
 
