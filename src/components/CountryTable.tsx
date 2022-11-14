@@ -34,10 +34,18 @@ const CountryTable = ({countries}: CountryTableProps) => {
                 <TableCell>
                     <img src={item.flags.png} alt="flag" width="60em" />
                 </TableCell>
-                <TableCell><Link to = {"countries/" + item.name.official}>{item.name.official}</Link></TableCell>
-                <TableCell>{Object.keys(item.currencies)}</TableCell>
+                <TableCell>
+                  <Link to = {"countries/" + item.name.official}>{item.name.official}</Link>
+                </TableCell>
+                <TableCell>
+                {Object.values(item.currencies).map((item: any) => (
+                  <Typography key={item}>{item.name}</Typography>
+                ))}
+                </TableCell>
                 <TableCell>{item.capital}</TableCell>
-                <TableCell>{Object.values(item.languages).map((item: any) => (<Typography key={item}>{item}</Typography>))}</TableCell>
+                <TableCell>
+                  {Object.values(item.languages).map((item: any) => (<Typography key={item}>{item}</Typography>))}
+                </TableCell>
               </TableRow>
             ))} 
           </TableBody>
