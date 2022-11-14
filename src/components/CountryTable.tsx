@@ -21,7 +21,17 @@ const CountryTable = ({countries}: CountryTableProps) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {countries.map((item) => (
+            {!countries.length ? 
+            
+            <TableRow>
+              <TableCell>No Flag</TableCell>
+              <TableCell>No Official name</TableCell>
+              <TableCell>No Currency</TableCell>
+              <TableCell>No Capital</TableCell>
+              <TableCell>No Languages</TableCell>
+            </TableRow>
+            
+            : countries.map((item) => (
               <TableRow key={item.name.official}>
                 <TableCell>
                     <img src={item.flags.png} alt="flag" width="60em" />
@@ -31,7 +41,7 @@ const CountryTable = ({countries}: CountryTableProps) => {
                 <TableCell>{item.capital}</TableCell>
                 <TableCell>{Object.values(item.languages).map((item: any) => (<Typography key={item}>{item}</Typography>))}</TableCell>
               </TableRow>
-            ))}
+            ))} 
           </TableBody>
         </Table>
       </TableContainer>
