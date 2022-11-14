@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { fetchCountries } from '../redux/reducers/countries';
-import { Country } from '../types/country';
+import React from 'react'
 import { useParams } from 'react-router-dom';
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import {useAppSelector } from "../redux/hooks";
 import Typography from '@mui/material/Typography';
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
 
 
 

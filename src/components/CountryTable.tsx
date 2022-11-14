@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import { Country } from '../types/country';
+import React from "react";
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { CountryTableProps } from "../types/CountryTable";
 import Typography from '@mui/material/Typography';
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CountryTable = ({countries}: CountryTableProps) => {
     return (

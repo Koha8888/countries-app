@@ -1,15 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
-import CountryTable from './components/CountryTable';
 import { useAppSelector, useAppDispatch } from './redux/hooks';
-import { countriesReducer, fetchCountries, sortByName } from './redux/reducers/countries';
-import Typography from '@mui/material/Typography';
+import {fetchCountries} from './redux/reducers/countries';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import ToggleButton from './components/ToggleButton';
-import { Box } from "@mui/system";
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
-
-import Home from './pages/Home';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import SingleCountry from './pages/SingleCountry'
+import Home from './pages/Home';
 
 
 

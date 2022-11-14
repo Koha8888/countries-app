@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Country } from '../types/country'
 import { fetchCountries, sortByName } from '../redux/reducers/countries';
 import CountryTable from '../components/CountryTable';
 import Typography from '@mui/material/Typography';
@@ -29,7 +28,6 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Home Page</h1>
             <Box className="App" sx={{bgcolor:'background.default'}} padding={5}>
                 <Typography variant="h3" align='center' color="#5e6166">Countries</Typography>
                 <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
