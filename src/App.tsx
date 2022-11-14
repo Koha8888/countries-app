@@ -66,17 +66,10 @@ function App() {
     <BrowserRouter>
     <ThemeContext.Provider value={manageTheme}>
       <ThemeProvider theme={theme}>
-        <Box className="App" sx={{bgcolor:'background.default'}} padding={5}>
-        <Typography variant="h3" align='center' color="#5e6166">Countries</Typography>
-        <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
-          <ToggleButton/>
           <Routes>
             <Route path='/' element={ <Home /> }> </Route>
             <Route path='/countries/:name' element={ <SingleCountry /> }> </Route>
           </Routes>
-
-          <CountryTable countries={countries} /> 
-        </Box>
       </ThemeProvider>
     </ThemeContext.Provider>
     </BrowserRouter>

@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { Country } from '../types/country'
-import { fetchCountries } from '../redux/reducers/countries';
+import { fetchCountries, sortByName } from '../redux/reducers/countries';
 import CountryTable from '../components/CountryTable';
+import Typography from '@mui/material/Typography';
+import { Box } from "@mui/system";
+import ToggleButton from '../components/ToggleButton';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+
+
 
 const Home = () => {
 
-    // const [countries, setCountries] = useState<Country[]>([])
+    const dispatch = useAppDispatch()
+    const countries = useAppSelector (state => state.countriesReducer)
 
-    // useEffect(() => {
-    //   const fetchCountries = () => {
-    //     fetch("https://restcountries.com/v3.1/all?fields=name,currencies,capitals,languages,flags")
-    //     .then((res)=> res.json())
-    //     .then((data:Country[])=>{
-    //         setCountries(data)
-    //   })
-    //   }
-    // }, [])
-    
-    // fetchCountries()
+    useEffect( () => { 
+        fetchCountries()
+    }, [])
 
-  return (
-    <div>
-        <CountryTable countries={[]}/>
-    </div>
-  )
+    return (
+        <div>
+            <h1>Home Page</h1>
+            <Box className="App" sx={{bgcolor:'background.default'}} padding={5}>
+                <Typography variant="h3" align='center' color="#5e6166">Countries</Typography>
+                <button onClick={ () => dispatch(sortByName())}>Sort Countries</button>
+                <ToggleButton/>
+                <CountryTable countries={countries}/>
+            </Box>
+        </div>
+    )
 }
 
 export default Home

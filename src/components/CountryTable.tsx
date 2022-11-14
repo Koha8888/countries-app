@@ -11,7 +11,7 @@ const CountryTable = ({countries}: CountryTableProps) => {
     return (
         <TableContainer>
         <Table>
-          {/* <TableHead>
+          <TableHead>
             <TableRow>
               <TableCell>Flag</TableCell>
               <TableCell>Official name</TableCell>
@@ -19,7 +19,7 @@ const CountryTable = ({countries}: CountryTableProps) => {
               <TableCell>Capital</TableCell>
               <TableCell>Languages</TableCell>
             </TableRow>
-          </TableHead> */}
+          </TableHead>
           <TableBody>
             {countries.map((item) => (
               <TableRow key={item.name.official}>
