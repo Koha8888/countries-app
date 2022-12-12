@@ -62,8 +62,8 @@ function App() {
     <ThemeContext.Provider value={manageTheme}>
       <ThemeProvider theme={theme}>
           <Routes>
-            <Route path='/' element={ <Home /> }> </Route>
-            <Route path='/countries/:name' element={ <SingleCountry /> }> </Route>
+            <Route path='/bof-frontend-project-basic' element={ <Home /> }> </Route>
+            <Route path='/bof-frontend-project-basic/countries/:name' element={ <SingleCountry /> }> </Route>
           </Routes>
       </ThemeProvider>
     </ThemeContext.Provider>
