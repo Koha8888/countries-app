@@ -1,6 +1,6 @@
 # Frontend React Project
 
-This is my final project for the frontend module
+This is my final project for the frontend module 
 
 ## About this project:
 ### Step 1
@@ -28,5 +28,11 @@ This is my final project for the frontend module
 
 - Implement a search bar to search for a country
 - Sort the table based on name, region, etc.
+- dark/light theme
 
 ## Preview:
+![homepage](media/screen1.png)
+![theme](media/screen2.png)
+![sort](media/screen3.png)
+![search](media/screen4.png)
+![single](media/screen5.png)
