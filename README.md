@@ -31,8 +31,13 @@ This is my final project for the frontend module
 - dark/light theme
 
 ## Preview:
+Main page
 ![homepage](media/screen1.png)
+Dark theme
 ![theme](media/screen2.png)
+Sort countries
 ![sort](media/screen3.png)
+Search country 
 ![search](media/screen4.png)
+Single-country page
 ![single](media/screen5.png)
